@@ -6,8 +6,8 @@ import { authController } from "@/app/auth/authController";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import Exercise from "@/models/Exercise";
 import User from "@/models/User";
-import { redirect, RedirectType } from "next/navigation";
-import { AxiosError } from 'axios';
+import { redirect } from "next/navigation";
+
 
 const API_URL = "https://swafe24fitness.azurewebsites.net/api"
 
@@ -79,9 +79,9 @@ const apiCall = async <T>(
         throw new Error("Unexpected response format");
       }
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (axios.isAxiosError(error)) {
         throw new Error(
-          error.response?.data?.message ||
+          error?.response?.data?.message ||
           error.message ||
           "Something went wrong with the API."
         );
@@ -115,8 +115,8 @@ const apiCall = async <T>(
       throw new Error("Login failed. Invalid credentials.");
       }
     } catch (error) {
-      if (error instanceof AxiosError) {
-        const message = error.response?.data?.message || error.message;
+      if (axios.isAxiosError(error)) {
+        const message = error?.response?.data?.message || error.message;
         throw new Error(message || "Something went wrong with the API.");
       } else {
         throw new Error("An unknown error occurred.");
@@ -144,7 +144,7 @@ export const createClient = async (formData: FormData): Promise<User> => {
   try {
     return await apiCall<User>(`${API_URL}/Users`, "POST", token, newClient);
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(error?.response?.data?.message || error.message || "Failed to create client.");
     } else if (error instanceof Error) {
       throw new Error(`Failed to create client: ${error.message}`);
@@ -175,7 +175,7 @@ export const createWorkoutProgram = async (
     const response = await apiCall<WorkoutProgram>(`${API_URL}/WorkoutPrograms`, "POST", token, newWorkoutProgram);
     return response;
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(error?.response?.data?.message || error.message || "Failed to create workout program.");
     } else if (error instanceof Error) {
       throw new Error(`Failed to create workout program: ${error.message}`);
@@ -205,7 +205,7 @@ export const createTrainer = async (
   try {
     return await apiCall<User>(`${API_URL}/Users`, "POST", token, newTrainer);
     } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(error?.response?.data?.message || error.message || "Failed to create trainer.");
     } else if (error instanceof Error) {
       throw new Error(`Failed to create trainer: ${error.message}`);
@@ -238,7 +238,7 @@ export const addExerciseToProgram = async (
     );
     return response;
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(error?.response?.data?.message || error.message || "Failed to add exercise to program.");
     } else if (error instanceof Error) {
       throw new Error(`Failed to add exercise to program: ${error.message}`);
@@ -271,7 +271,7 @@ export const getClients = async (): Promise<User[]> => {
     console.log("API Response (Clients):", response.data);
     return response.data;
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       console.error("Error fetching clients:", error.response?.data || error.message);
       throw new Error(`Failed to fetch clients: ${error.response?.data?.message || error.message}`);
     } else {
@@ -337,8 +337,8 @@ export const getTrainers = async (): Promise<User> => {
       throw new Error("Failed to fetch trainer details.");
     }
   } catch (error) {
-    if (error instanceof AxiosError) {
-      if (error.response?.status === 400) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 404) {
         console.error("Error fetching trainer: Personal Trainer not set.");
         throw new Error("Personal Trainer not set. Please check your trainer details.");
       }
@@ -372,7 +372,7 @@ export const getClientsForTrainer = async (): Promise<User[]> => {
       throw new Error("Failed to fetch clients.");
     }
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       console.error("Error fetching clients:", error.response?.data || error.message);
       throw new Error(`Failed to fetch clients: ${error.response?.data?.message || error.message}`);
     } else {
@@ -405,7 +405,7 @@ export const getTrainerWorkoutPrograms = async (): Promise<WorkoutProgram[]> => 
       throw new Error("Failed to fetch workout programs.");
     }
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to fetch workout programs: ${error.message}`);
     } else {
       throw new Error("An unknown error occurred while fetching workout programs.");
@@ -436,7 +436,7 @@ export const getWorkoutProgram = async (programId: number): Promise<WorkoutProgr
       throw new Error("Failed to fetch workout program details.");
     }
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(error?.response?.data?.message || error.message || "Failed to fetch workout program details.");
     } else {
       throw new Error("An unknown error occurred while fetching workout program details.");
@@ -466,7 +466,7 @@ export const getWorkoutProgramDetails = async (programId: number): Promise<Worko
       throw new Error("Failed to fetch workout program details.");
     }
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to fetch workout program details: ${error.message}`);
     } else {
       throw new Error("An unknown error occurred while fetching workout program details.");
@@ -488,7 +488,7 @@ export const getExercises = async (): Promise<Exercise[]> => {
     });
     return response.data; 
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to fetch exercises: ${error.response?.data?.message || error.message}`);
     } else if (error instanceof Error) {
       throw new Error(`Failed to fetch exercises: ${error.message}`);
@@ -511,7 +511,7 @@ export const getUsers = async (): Promise<User[]> => {
     });
     return response.data; 
   } catch (error) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to fetch users: ${error.response?.data?.message || error.message}`);
     } else if (error instanceof Error) {
       throw new Error(`Failed to fetch users: ${error.message}`);
@@ -534,7 +534,7 @@ export const deleteClient = async (userId: number): Promise<User> => {
   } try {
     return await apiCall<User>(`${API_URL}/Users/${userId}`, "DELETE", token);
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to delete client: ${error?.response?.data?.message || error.message}`);
     } else if (error instanceof Error) {
       throw new Error(`Failed to delete client: ${error.message}`);
@@ -552,7 +552,7 @@ export const deleteWorkoutProgram = async (programId: number): Promise<WorkoutPr
   } try {
     return await apiCall<WorkoutProgram>(`${API_URL}/WorkoutPrograms/${programId}`, "DELETE", token);
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to delete workout program: ${error?.response?.data?.message || error.message}`);
     } else if (error instanceof Error) {
       throw new Error(`Failed to delete workout program: ${error.message}`);
@@ -570,7 +570,7 @@ export const deleteExerciseFromProgram = async (programId: number, exerciseId: n
   } try {
     return await apiCall<Exercise>(`${API_URL}/Exercises/${exerciseId}/Program/${programId}`, "DELETE", token);
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       throw new Error(`Failed to delete exercise from program: ${error?.response?.data?.message || error.message}`);
     } else if (error instanceof Error) {
       throw new Error(`Failed to delete exercise from program: ${error.message}`);

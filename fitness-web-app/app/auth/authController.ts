@@ -14,7 +14,7 @@ export const authController: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         try {
         const loginResponse = await fetch(
           "https://afefitness2023.azurewebsites.net/api/Users/login",
