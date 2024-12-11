@@ -1,0 +1,76 @@
+
+.homepageContainer {
+  padding: 2.5rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 3rem auto;
+  background: linear-gradient(135deg, #f0f4f8, #c3cfe2);
+}
+
+.welcomeMessage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.homepageDescription {
+  font-size: 1.25rem;
+  color: #4b5563;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 1.5rem;
+}
+
+.dashboardButton {
+  background-color: #3b82f6;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+.dashboardButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .homepageContainer {
+    padding: 2rem;
+    margin: 1.5rem auto;
+  }
+
+  .welcomeMessage {
+    font-size: 2rem;
+  }
+
+  .homepageDescription {
+    font-size: 1.1rem;
+  }
+
+  .dashboardButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}

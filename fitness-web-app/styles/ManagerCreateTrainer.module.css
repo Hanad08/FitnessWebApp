@@ -1,0 +1,68 @@
+.create-trainer-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .create-trainer-container h1 {
+    font-size: 2rem;
+    color: #1e40af;
+    margin-bottom: 1rem;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .create-trainer-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .create-trainer-container input:focus {
+    border-color: #3b82f6;
+    outline: none;
+  }
+  
+  .create-trainer-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-trainer-container button:hover {
+    background-color: #2563eb;
+  }
+  
+  @media (max-width: 768px) {
+    .create-trainer-container {
+      padding: 1.5rem;
+    }
+  
+    .create-trainer-container input {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  
+    .create-trainer-container button {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }

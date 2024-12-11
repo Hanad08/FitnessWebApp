@@ -1,0 +1,79 @@
+.homepageContainer {
+    padding: 3rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 3rem auto;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  }
+  
+  .welcomeMessage {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  
+  .homepageDescription {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  
+  .buttonContainer {
+    margin-top: 2rem;
+  }
+  
+  .dashboardButton {
+    background-color: #3b82f6;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboardButton:hover {
+    background-color: #2563eb;
+    transform: translateY(-3px);
+  }
+  
+  .dashboardButton:active {
+    transform: translateY(0);
+  }
+  
+  .loading {
+    font-size: 1.5rem;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .homepageContainer {
+      padding: 2rem;
+    }
+  
+    .welcomeMessage {
+      font-size: 2rem;
+    }
+  
+    .homepageDescription {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .dashboardButton {
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+    }
+  }

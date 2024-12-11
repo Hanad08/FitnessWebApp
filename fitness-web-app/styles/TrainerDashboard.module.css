@@ -1,0 +1,180 @@
+.dashboardContainer {
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: "Arial", sans-serif;
+    height: 100%;
+  }
+  
+  .dashboardTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1d3557;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .backButton {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .welcomeContainer {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .welcomeContainer h2 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .welcomeContainer p {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+  }
+  
+  .dashboardButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboardButtons button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .dashboardButtons button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .activeTab {
+    background-color: #0056b3;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .tabContent {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .tabContent h2 {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+  
+  .tabContent p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  .clientCard,
+  .programCard {
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .clientCard h3,
+  .programCard h3 {
+    font-size: 1.2rem;
+    color: #007bff;
+  }
+  
+  .clientCard p,
+  .programCard p {
+    font-size: 1rem;
+    color: #555555;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .profileDetails {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profileDetails p {
+    font-size: 1rem;
+    color: #555555;
+  }
+  
+  .profileDetails strong {
+    font-size: 1.1rem;
+    color: #333333;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboardContainer {
+      padding: 15px;
+    }
+  
+    .dashboardButtons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .dashboardButtons button {
+      width: 100%;
+    }
+  
+    .backButton {
+      font-size: 1rem;
+      padding: 8px;
+    }
+  
+    .tabContent {
+      padding: 15px;
+    }
+  
+    .welcomeContainer {
+      padding: 15px;
+    }
+  }
+  
