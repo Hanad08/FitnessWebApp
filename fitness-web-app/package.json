@@ -9,18 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "js-cookie": "^3.0.6",
+    "@auth/core": "^0.37.4",
+    "axios": "^1.7.9",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
-    "next": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "next-auth": "^4.0.0",
-    "axios": "^0.24.0"
+    "next": "^15.0.3",
+    "next-auth": "^5.0.0-beta.25",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/next-auth": "^4.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

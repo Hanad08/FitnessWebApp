@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getToken, decodeJwt } from "@/services/services";
 import { getClientWorkoutPrograms } from "@/services/services";
-import { getToken, decodeJwt, UserInfo } from "@/services/services";
 import { WorkoutProgram } from "@/models/WorkoutProgram";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/ClientDashboard.module.css"; 
+import UserInfo from "@/models/Userinfo";
 
 export default function ClientDashboard() {
   const [activeTab, setActiveTab] = useState<"dashboard" | "workouts" | "profile">("dashboard");
   const [workoutPrograms, setWorkoutPrograms] = useState<WorkoutProgram[]>([]);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<UserInfo | null>(null); 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const router = useRouter();
@@ -23,8 +24,10 @@ export default function ClientDashboard() {
         return;
       }
 
-      const decodedUser = decodeJwt(token);
-      setUser(decodedUser);
+      const decodedUser = decodeJwt(token); 
+      if (decodedUser) {
+        setUser(decodedUser); // Save UserInfo for authentication
+      }
 
       if (activeTab === "workouts") {
         try {

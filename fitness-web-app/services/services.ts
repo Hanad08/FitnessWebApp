@@ -1,27 +1,19 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Cookies from "js-cookie";
-import { getServerSession } from "next-auth";
+import getServerSession from "next-auth";
 import { revalidateTag } from "next/cache";
 import { authController } from "@/app/auth/authController";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import Exercise from "@/models/Exercise";
+import UserInfo from "@/models/Userinfo";
 import User from "@/models/User";
 import { redirect } from "next/navigation";
-
 
 const API_URL = "https://swafe24fitness.azurewebsites.net/api"
 
 ////////////////////////////
 // JWT & COOKIE FUNCTIONS
 ////////////////////////////
-export type UserInfo = {
-  Name: string;
-  Role: string;
-  UserId: string;
-  GroupId?: string;
-  nbf?: string;
-  exp?: string;
-};
 
 export const decodeJwt = (token: string): UserInfo | null => {
   try {
@@ -50,6 +42,7 @@ export const getToken = (): string | null => {
 export const clearToken = () => {
   Cookies.remove("jwt_token");
 };
+
 
 
 ////////////////////////                                                        
@@ -594,7 +587,7 @@ export const revalidateCache = () => {
 // Session controller to handle user roles and redirection
 export async function SessionController() {
     const session = await getServerSession(authController);
-    if (!session || !session.user) {
+    if (!session || !(session as any).user) {
       redirect("")
-    } return { role: session?.user?.role, name: session?.user?.name };
+    } return { role: (session as any)?.user?.role, name: (session as any)?.user?.name };
 }

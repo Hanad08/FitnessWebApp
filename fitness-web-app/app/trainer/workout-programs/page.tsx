@@ -6,7 +6,6 @@ import { createWorkoutProgram, getClientsForTrainer, addExerciseToProgram, getWo
 import { getToken, decodeJwt } from "@/services/services";
 import { User } from "@/models/User";
 import { WorkoutProgram } from "@/models/WorkoutProgram";
-import { Exercise } from "@/models/Exercise"; 
 import styles from "@/styles/WorkoutProgram.module.css";
 
 export default function CreateWorkoutProgram() {
@@ -46,7 +45,8 @@ export default function CreateWorkoutProgram() {
       try {
         const clientsList = await getClientsForTrainer(); 
         setClients(clientsList);
-      } catch (err) {
+      } catch (error) {
+        console.error("Error fetching clients:", error);
         setError("Error fetching clients.");
       }
     };
@@ -62,7 +62,8 @@ export default function CreateWorkoutProgram() {
       try {
         const programsList = await getTrainerWorkoutPrograms(); 
         setWorkoutPrograms(programsList);
-      } catch (err) {
+      } catch (error) {
+        console.error("Error fetching workout programs:", error);
         setError("Error fetching workout programs.");
       }
     };
@@ -143,7 +144,8 @@ export default function CreateWorkoutProgram() {
     try {
       const details = await getWorkoutProgram(programId); 
       console.log(details); 
-    } catch (err) {
+    } catch (error) {
+      console.error("Error fetching program details:", error);
       setError("Error fetching program details.");
     }
   };

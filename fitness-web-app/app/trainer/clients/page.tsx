@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/services/services";  
 import { getToken, decodeJwt } from "@/services/services";  
-import { User } from "@/models/User";  
 import styles from "@/styles/TrainerCreateClient.module.css";
 
 

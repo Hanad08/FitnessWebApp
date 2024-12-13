@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getToken, decodeJwt, clearToken } from "@/services/services";
-import { UserInfo } from "@/services/services";
+import { UserInfo } from "@/models/Userinfo";
 import styles from "@/styles/TrainerHomepage.module.css";
 
 export default function TrainerHomepage() {

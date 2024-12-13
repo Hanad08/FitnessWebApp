@@ -7,12 +7,13 @@ import { getToken, decodeJwt } from "@/services/services";
 import { User } from "@/models/User"; 
 import { WorkoutProgram } from "@/models/WorkoutProgram"; 
 import styles from "@/styles/TrainerDashboard.module.css";
+import { UserInfo } from "@/models/Userinfo";
 
 export default function TrainerDashboard() {
   const [activeTab, setActiveTab] = useState<"dashboard" | "clients" | "workouts" | "profile">("dashboard");
   const [clients, setClients] = useState<User[]>([]); 
   const [workoutPrograms, setWorkoutPrograms] = useState<WorkoutProgram[]>([]); 
-  const [trainer, setTrainer] = useState<any>(null); 
+  const [trainer, setTrainer] = useState<UserInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true); 
   const [error, setError] = useState<string>(""); 
   const router = useRouter();
@@ -76,7 +77,7 @@ export default function TrainerDashboard() {
 
       {/* Main content container */}
       <div className={styles.welcomeContainer}>
-        <h2>Welcome, {trainer?.firstName} {trainer?.lastName || "Trainer"}!</h2>
+        <h2>Welcome, {trainer?.Name|| "Trainer"}!</h2>
         <p>Use the navigation buttons to manage clients, workout programs, and profile.</p>
 
         {/* Buttons */}
@@ -178,7 +179,7 @@ export default function TrainerDashboard() {
             {trainer ? (
               <div className={styles.profileDetailsContent}>
                <p><strong>Name:</strong> {trainer.Name || "Unknown"} </p>
-               <p><strong>Email:</strong> {trainer.email || "Unknown"}</p>
+               <p><strong>Email:</strong> {trainer.Email || "Unknown"}</p>
                <p><strong>Role:</strong> {trainer.Role || "Unknown"}</p>
                {trainer.GroupId && <p><strong>Group ID:</strong> {trainer.GroupId}</p>}
                {trainer.UserId && <p><strong>User ID:</strong> {trainer.UserId}</p>}

@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-gray-100">
-        <Provider session={null}>{children}</Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

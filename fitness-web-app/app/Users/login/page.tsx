@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { decodeJwt, loginUser } from "@/services/services";
+import { loginUser } from "@/services/services";
 import Cookies from "js-cookie";
 import styles from "@/styles/Login.module.css";
 
@@ -31,8 +31,9 @@ export default function Login() {
           setError("Unknown user role. Please contact support.");
         }
       }
-    } catch (err: any) {
-      setError(err.message || "Login failed. Please try again.");
+    } catch (error) {
+      console.error("Login failed:", error);
+      setError("Login failed. Please check your credentials.");
     }
   };
 
